@@ -74,6 +74,29 @@ top of this).
   different best route or ETA five seconds later, because you catch
   different lights.
 
+## Running it on real data
+
+`demo_real.py` runs the same algorithm against real intersections instead of
+the synthetic grid: 8 actual signalized crossings along Market Street in San
+Francisco, geocoded from OpenStreetMap via Nominatim (`data/market_street_signals.json`,
+built by `app/real_data.py`). Distances between intersections are computed
+from their real coordinates (haversine) -- these are genuine block lengths,
+not made up.
+
+```bash
+python3 demo_real.py
+```
+
+**What's real here and what isn't**: intersection positions and the
+distances between them are real (sourced from OpenStreetMap). Signal
+*timing* (cycle length, offsets) is a labeled assumption, not real ATSPM/SPaT
+data -- as covered above, that data isn't publicly available for this
+corridor, which is itself the market-validation finding from earlier
+(agencies and the incumbent vendors hold it, not the open web). So this
+demonstrates the algorithm and data pipeline work end-to-end on real-world
+geometry; it does not demonstrate real Market Street light timing, because
+that data doesn't exist anywhere public to pull.
+
 ## What's simplified (and would need work for a real pilot)
 
 - **Pretimed signal assumption.** `SignalPlan` models a fixed repeating

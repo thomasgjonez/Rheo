@@ -1,0 +1,66 @@
+[
+  {
+    "label": "Market St & Steuart St",
+    "lat": 37.7942771,
+    "lon": -122.3948769,
+    "source": "OpenStreetMap via Nominatim",
+    "osm_id": 386601725,
+    "osm_type": "node"
+  },
+  {
+    "label": "Market St & 2nd St",
+    "lat": 37.7893882,
+    "lon": -122.4010875,
+    "source": "OpenStreetMap via Nominatim",
+    "osm_id": 5015578942,
+    "osm_type": "node"
+  },
+  {
+    "label": "Market St & 4th St",
+    "lat": 37.785435,
+    "lon": -122.406242,
+    "source": "OpenStreetMap via Nominatim",
+    "osm_id": 6315233975,
+    "osm_type": "node"
+  },
+  {
+    "label": "Market St & 5th St",
+    "lat": 37.7836265,
+    "lon": -122.4085316,
+    "source": "OpenStreetMap via Nominatim",
+    "osm_id": 6933298549,
+    "osm_type": "node"
+  },
+  {
+    "label": "Market St & 6th St",
+    "lat": 37.7819794,
+    "lon": -122.410615,
+    "source": "OpenStreetMap via Nominatim",
+    "osm_id": 6315233972,
+    "osm_type": "node"
+  },
+  {
+    "label": "Market St & 7th St",
+    "lat": 37.7803418,
+    "lon": -122.412685,
+    "source": "OpenStreetMap via Nominatim",
+    "osm_id": 6315233970,
+    "osm_type": "node"
+  },
+  {
+    "label": "Market St & 8th St",
+    "lat": 37.7785608,
+    "lon": -122.414937,
+    "source": "OpenStreetMap via Nominatim",
+    "osm_id": 6315233968,
+    "osm_type": "node"
+  },
+  {
+    "label": "Market St & Van Ness Ave",
+    "lat": 37.7754085,
+    "lon": -122.418986,
+    "source": "OpenStreetMap via Nominatim",
+    "osm_id": 6315233965,
+    "osm_type": "node"
+  }
+]
