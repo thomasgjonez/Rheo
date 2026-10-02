@@ -1,0 +1,50 @@
+import numpy as np
+
+# ---------------------------------------------------------
+# 1. Simulate the FCD (Floating Car Data)
+# ---------------------------------------------------------
+true_cycle_length = 90  # A standard 90-second traffic light cycle
+total_time = 3600 * 4   # 4 hours of observation time
+time_resolution = 1     # 1-second bins for the time series
+
+# Generate perfect vehicle start events every 90 seconds
+true_events = np.arange(0, total_time, true_cycle_length)
+
+# Real data is messy. Add random noise (Standard deviation = 5 seconds) 
+# to simulate driver reaction times and queue positions.
+noise = np.random.normal(0, 5, len(true_events))
+noisy_events = np.clip(true_events + noise, 0, total_time - 1).astype(int)
+
+# Create a continuous time-series signal (array of zeros)
+# Place a '1' at the exact second a vehicle starts moving
+signal = np.zeros(total_time)
+for event in noisy_events:
+    signal[event] += 1
+
+# ---------------------------------------------------------
+# 2. Apply the Fast Fourier Transform (FFT)
+# ---------------------------------------------------------
+# We use rfft (Real FFT) because our time-series signal contains only real numbers, no complex numbers
+fft_result = np.fft.rfft(signal)
+
+# The result contains complex numbers. We need the absolute magnitude to find the strongest frequencies.
+fft_magnitude = np.abs(fft_result)
+
+# Generate the frequency x-axis corresponding to our FFT output
+frequencies = np.fft.rfftfreq(total_time, d=time_resolution)
+
+# ---------------------------------------------------------
+# 3. Extract the Dominant Cycle
+# ---------------------------------------------------------
+# The 0th element is the "DC component" (the average of the signal). We zero it out to ignore it.
+fft_magnitude[0] = 0 
+
+# Find the index of the highest magnitude peak
+dominant_index = np.argmax(fft_magnitude)
+dominant_frequency = frequencies[dominant_index]
+
+# Cycle Length (Time) is the reciprocal of Frequency (T = 1/f)
+estimated_cycle = 1 / dominant_frequency
+
+print(f"Dominant Frequency: {dominant_frequency:.5f} Hz")
+print(f"Estimated Cycle Length: {estimated_cycle:.2f} seconds")
